@@ -1,9 +1,9 @@
 import Arima from "./Estruturas/Client"
 import dotenv from "dotenv"
 dotenv.config()
-import fs from "fs"
+import discord from "discord.js"
 
-const client = new Arima({})
+const client = new Arima({ws: {intents: discord.Intents.ALL}})
 
 client.login(process.env.TOKEN)
 

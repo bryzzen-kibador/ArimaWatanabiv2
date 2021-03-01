@@ -20,7 +20,7 @@ module.exports = class Eval extends Command{
     async execute(message: Message, args: string[]){
       if(!args[0]){
 
-        let prefix = message.guild?.guildCache()?.prefix || this.client.guildsCache.get(message.guild?.id as string)?.prefix
+        let prefix = await message.guild?.guildCache()?.prefix || this.client.guildsCache.get(message.guild?.id as string)?.prefix
 
         let trad = await this.client.getTranslate(message.guild?.id as string, "help")
         let embed = new this.client.utils.embed()

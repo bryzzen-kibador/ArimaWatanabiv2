@@ -1,6 +1,7 @@
-import { Message, MessageAttachment, MessageEmbed } from "discord.js"
+import { Message, MessageAttachment, MessageEmbed, Guild } from "discord.js"
 import Client from "../Estruturas/Client"
-module.exports = class Ready {
+
+module.exports = class Msg {
   client: Client
 
   constructor(client: Client) {
@@ -9,7 +10,8 @@ module.exports = class Ready {
 
   async execute(message: Message) {
     if(message.author.bot) return
-    let prefix = message.guild?.guildCache()?.prefix || this.client.guildsCache.get(message.guild?.id as string)?.prefix
+    
+    let prefix = await message.guild?.guildCache()?.prefix || this.client.guildsCache.get(message.guild?.id as string)?.prefix
 
     if([this.client.user?.toString(), `<@!${this.client.user?.id}>`].includes(message.content)){
       let embed = new this.client.utils.embed()
@@ -23,7 +25,6 @@ module.exports = class Ready {
     if (!message.content.startsWith(prefix) && !message.content.startsWith("arima ")) return;
     if (message.content === prefix) return;
     if (message.content === "arima ") return;
-    //if(this.client.user?.toString() + " " || `<@!${this.client.user?.id}> ` == message.content) return;
 
     let cmdName = "";
     let args = message.content.split(" ").slice(1)
@@ -33,10 +34,6 @@ module.exports = class Ready {
       cmdName = message.content.split(" ")[1]
       args = args.slice(1)
     }
-    /*if ([`${this.client.user?.toString()} `, `<@!${this.client.user?.id}> `].includes(message.content)) {
-      cmdName = message.content.split(" ")[1]
-      args = args.slice(1)
-    }*/
     if (cmdName === "") return;
 
 
