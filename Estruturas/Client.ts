@@ -60,7 +60,7 @@ export default class Arima extends discord.Client{
     }
 
     async getTranslate(id: string, local: string){
-      let lang = this.guildsCache.get(id)?.lang
+      let lang = this.guildsCache.get(id)?.lang || "en"
 
       let json = require(`../translate/${lang}/commands.json`)
 
