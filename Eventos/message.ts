@@ -25,7 +25,7 @@ module.exports = class Ready {
     }
 
 
-    if (!message.content.startsWith(prefix) && !message.content.startsWith("arima ") && ![`${this.client.user?.toString()} `, `<@!${this.client.user?.id}> `].includes(message.content)) return;
+    if (!message.content.startsWith(prefix) && !message.content.startsWith("arima ")) return;
     if (message.content === prefix) return;
     if (message.content === "arima ") return;
     if(this.client.user?.toString() + " " || `<@!${this.client.user?.id}> ` == message.content) return;
@@ -38,10 +38,10 @@ module.exports = class Ready {
       cmdName = message.content.split(" ")[1]
       args = args.slice(1)
     }
-    if ([`${this.client.user?.toString()} `, `<@!${this.client.user?.id}> `].includes(message.content)) {
+    /*if ([`${this.client.user?.toString()} `, `<@!${this.client.user?.id}> `].includes(message.content)) {
       cmdName = message.content.split(" ")[1]
       args = args.slice(1)
-    }
+    }*/
     if (cmdName === "") return;
 
 

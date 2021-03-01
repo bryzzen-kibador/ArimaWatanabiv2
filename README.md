@@ -6,6 +6,8 @@
   <h1>
   Hello, my name is Arima, and I'm a bot made to take care of your group!
   </h1>
+  <br />
+  <br />
 </div>
 
 ## Basis of Development Inspired by:
