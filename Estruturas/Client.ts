@@ -1,9 +1,12 @@
-import discord from "discord.js"
+import discord, { MessageEmbed } from "discord.js"
 import fs from "fs"
 import gDb from "../Modelos/guild"
+import Embed from "./Embed";
+require("../Extra/GuildCache")
 
 interface utils {
     mstodate: (time: number) => object;
+    embed: typeof Embed;
 }
 
 interface GuildCache {
@@ -51,8 +54,10 @@ export default class Arima extends discord.Client{
         this.gDB = gDb;
         this.guildsCache = new Map()
 
+
         this.utils = {
-            mstodate: mstodate
+            mstodate: mstodate,
+            embed: Embed
         }
         
         this.commands = []

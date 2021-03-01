@@ -1,7 +1,5 @@
 import { Message, MessageAttachment, MessageEmbed } from "discord.js"
 import Client from "../Estruturas/Client"
-import Guild from "../Modelos/guild"
-
 module.exports = class Ready {
   client: Client
 
@@ -11,13 +9,10 @@ module.exports = class Ready {
 
   async execute(message: Message) {
     if(message.author.bot) return
-    let guild = this.client.guildsCache.get(message.guild?.id as string)
-
-    let prefix = guild?.prefix || "w!"
+    let prefix = message.guild?.guildCache()?.prefix || "w!"
 
     if([this.client.user?.toString(), `<@!${this.client.user?.id}>`].includes(message.content)){
-      let embed = new MessageEmbed()
-      .setColor("RANDOM")
+      let embed = new this.client.utils.embed()
       .setAuthor(message.author.username, message.author.displayAvatarURL({dynamic: true}))
       .setDescription((await this.client.getTranslate(message.guild?.id as string, "mention")).replace("w!", prefix))
       .setFooter(message.author.username, message.author.displayAvatarURL({dynamic: true}))
@@ -28,7 +23,7 @@ module.exports = class Ready {
     if (!message.content.startsWith(prefix) && !message.content.startsWith("arima ")) return;
     if (message.content === prefix) return;
     if (message.content === "arima ") return;
-    if(this.client.user?.toString() + " " || `<@!${this.client.user?.id}> ` == message.content) return;
+    //if(this.client.user?.toString() + " " || `<@!${this.client.user?.id}> ` == message.content) return;
 
     let cmdName = "";
     let args = message.content.split(" ").slice(1)

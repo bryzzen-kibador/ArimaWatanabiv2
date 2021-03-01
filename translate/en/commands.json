@@ -2,5 +2,10 @@
     "error": {
         "cmd": "❌ I didn't find that command"
     },
-    "mention": "Hello, my name is Arima, and my prefix on this server is w!"
+    "mention": "Hello, my name is Arima, and my prefix on this server is w!",
+    "help": {
+        "title": "Help Command",
+        "fieldI": "[📕] Information Commands",
+        "description": "My prefix in this guild is w!"
+    }
 }

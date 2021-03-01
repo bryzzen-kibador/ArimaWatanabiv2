@@ -2,5 +2,10 @@
     "error": {
         "cmd": "❌ Não encontrei esse comando!"
     },
-    "mention": "Olá, me chamo Arima, e meu prefix neste servidor é w!"
+    "mention": "Olá, me chamo Arima, e meu prefix neste servidor é w!",
+    "help": {
+        "title": "Comando de Ajuda",
+        "fieldI": "[📕] Comandos de Informação",
+        "description": "Meu prefix nesse servidor é w!"
+    }
 }
