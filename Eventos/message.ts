@@ -22,9 +22,10 @@ module.exports = class Msg {
     }
 
 
-    if (!message.content.startsWith(prefix) && !message.content.startsWith("arima ")) return;
+    if (!message.content.startsWith(prefix) && !message.content.startsWith("arima ") && ![`${this.client.user?.toString()} `].includes(message.content)) return;
     if (message.content === prefix) return;
     if (message.content === "arima ") return;
+    if(message.content === `${this.client.user?.toString()} `) return;
 
     let cmdName = "";
     let args = message.content.split(" ").slice(1)
@@ -33,6 +34,16 @@ module.exports = class Msg {
     if (message.content.startsWith("arima ")) {
       cmdName = message.content.split(" ")[1]
       args = args.slice(1)
+    }
+    if(message.content.startsWith(this.client.user?.toString() + " ")){
+      cmdName = message.content.split(" ")[1]
+      args = args.slice(1)
+
+      Object.keys(message.mentions).map((f: any) => {
+        if(!message.mentions[f]) return;
+
+        message.mentions[f].delete([...message.mentions[f].keys()][0])
+      })
     }
     if (cmdName === "") return;
 
