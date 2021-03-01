@@ -11,7 +11,7 @@ module.exports = class Msg {
   async execute(message: Message) {
     if(message.author.bot) return
     
-    let prefix = message.guild?.guildCache().then(o => o?.prefix) || this.client.guildsCache.get(message.guild?.id as string)?.prefix
+    let prefix = await message.guild?.guildCache()?.prefix || this.client.guildsCache.get(message.guild?.id as string)?.prefix
 
     if([this.client.user?.toString(), `<@!${this.client.user?.id}>`].includes(message.content)){
       let embed = new this.client.utils.embed()
