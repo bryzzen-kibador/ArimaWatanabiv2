@@ -1,4 +1,4 @@
-import {Client} from "discord.js"
+import Client from "../Estruturas/Client"
 
 module.exports = class Ready{
     client: Client

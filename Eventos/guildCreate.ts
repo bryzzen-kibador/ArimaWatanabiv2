@@ -9,9 +9,10 @@ module.exports = class Ready{
     }
 
     execute(guild: discord.Guild){
-        this.client.guildsCache.set(guild.id, {
+        guild.guildCache = {
             lang: "en",
-            prefix: "w!"
-        })
+            prefix: "w!",
+            dj: ""
+        }
     }
 }

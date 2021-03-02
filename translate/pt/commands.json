@@ -1,11 +1,26 @@
 {
     "error": {
-        "cmd": "❌ Não encontrei esse comando!"
+        "cmd": "❌ Não encontrei esse comando! Tente usar w!ping"
     },
     "mention": "Olá, me chamo Arima, e meu prefix neste servidor é w!",
     "help": {
         "title": "Comando de Ajuda",
         "fieldI": "[📕] Comandos de Informação",
-        "description": "Meu prefix nesse servidor é w!"
-    }
+        "fieldM": "[🎶] Comandos de Música",
+        "description": "Meu prefix nesse servidor é w!",
+        "name": "> Nome",
+        "alias": "> Alternativas",
+        "usage": "> Exemplo"
+    },
+    "play": {
+        "voiceChannel": "❌ Você não está em um canal de voz",
+        "myVoiceChannel": "❌ Você precisa estar em meu canal de voz para executar esse comando",
+        "speak": "❌ Não consigo falar nesse canal!",
+        "connect": "❌ Não consigo me conectar nesse canal!",
+        "errorLoading": "❌ Não consegui carregar essa música!",
+        "errorFind": "❌ Não encontrei essa música!",
+        "fullChannel": "❌ O canal está cheio!"
+    },
+    "stop": "🎶 Eu parei!",
+    "stopP": "🎶 Não estou tocando nada!"
 }

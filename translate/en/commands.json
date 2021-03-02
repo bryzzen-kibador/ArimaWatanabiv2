@@ -1,11 +1,26 @@
 {
     "error": {
-        "cmd": "❌ I didn't find that command"
+        "cmd": "❌ I didn't find that command! Try using w!ping"
     },
     "mention": "Hello, my name is Arima, and my prefix on this server is w!",
     "help": {
         "title": "Help Command",
         "fieldI": "[📕] Information Commands",
-        "description": "My prefix in this guild is w!"
-    }
+        "fieldM": "[🎶] Music Commands",
+        "description": "My prefix in this guild is w!",
+        "name": "> Name",
+        "alias": "> Aliases",
+        "usage": "> Usage"
+    },
+    "play": {
+        "voiceChannel": "❌ You are not on a voice channel",
+        "myVoiceChannel": "❌ You need to be on my voice channel to execute this command",
+        "speak": "❌ I am not allowed to speak on this channel",
+        "connect": "❌ I am not allowed to connect to this channel",
+        "errorLoading": "❌ I can't load this music!",
+        "errorFind": "❌ I don't find this music",
+        "fullChannel": "❌ The channel is full"
+    },
+    "stop": "🎶 I stoped!",
+    "stopP": "🎶 I don't playing!"
 }

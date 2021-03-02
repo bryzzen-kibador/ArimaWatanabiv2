@@ -11,7 +11,7 @@ module.exports = class Msg {
   async execute(message: Message) {
     if(message.author.bot) return
     
-    let prefix = await message.guild.guildCache().prefix || this.client.guildsCache.get(message.guild?.id as string)?.prefix
+    let prefix = await message.guild.guildCache?.prefix || "w!"
 
     if([this.client.user?.toString(), `<@!${this.client.user?.id}>`].includes(message.content)){
       let embed = new this.client.utils.embed()
@@ -41,7 +41,7 @@ module.exports = class Msg {
       args = args.slice(1)
 
       Object.keys(message.mentions).map((f: any) => {
-        if(!message.mentions[f]) return;
+        if(!message.mentions.has(f)) return;
 
         message.mentions[f].delete([...message.mentions[f].keys()][0])
       })
@@ -52,9 +52,36 @@ module.exports = class Msg {
     let cmd = this.client.commands.find(f => f.aliases.concat([f.name]).includes(cmdName.toLowerCase()))
 
     let translate = await this.client.getTranslate(message.guild?.id as string, "error")
-    if (!cmd) return message.channel.send(`${translate.cmd}`)
+    if (!cmd){
+      let cmds: string[] = [];
+      let qual = ""
 
-    await cmd.execute(message, args)
+      this.client.commands.forEach((cmd) => {
+        if(cmd.category === "desenvolvedor"){
+          if(message.author.id == "719986033583849502"){
+            cmds = cmds.concat(cmd.aliases.concat([cmd.name]))
+          }
+        }else{
+          cmds = cmds.concat(cmd.aliases.concat([cmd.name]))
+        }
+
+        let distancia = Infinity
+
+        cmds.forEach(cmd => {
+          let leven = this.client.utils.leven(cmdName, cmd)
+
+          if(leven < distancia){
+            qual = cmd;
+            distancia = leven
+          }
+        })
+      })
+
+      message.channel.send(translate.cmd.replace("w!ping", `\`${prefix}${qual}\``));
+      return;
+    }
+
+    await cmd?.execute(message, args)
 
   }
 }

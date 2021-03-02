@@ -3,7 +3,7 @@ import dotenv from "dotenv"
 dotenv.config()
 import discord from "discord.js"
 
-const client = new Arima({ws: {intents: discord.Intents.ALL}})
+const client = new Arima({ws: {intents: discord.Intents.ALL}, messageCacheMaxSize: 100})
 
 client.login(process.env.TOKEN)
 
@@ -21,3 +21,4 @@ mongoose.connect(process.env.LINK as string, {
 client.loadEvents()
 client.loadCommands()
 client.loadGuilds()
+client.connectLavalink()

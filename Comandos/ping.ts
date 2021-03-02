@@ -2,14 +2,13 @@ import {Message} from "discord.js"
 import Command from "../Estruturas/Command"
 import Client from "../Estruturas/Client"
 
-module.exports = class Eval extends Command{
+module.exports = class Ping extends Command{
 
     client: Client
 
     constructor(client: Client){
         super(client, {
             name: "ping",
-            description: {pt: "Recebe a minha lâtencia!", en: "Get my latency"},
             aliases: ["pong"],
             category: "utilidade"
         })
