@@ -2,9 +2,15 @@ import { Message, GuildMember } from "discord.js"
 import { Manager, NodeOptions } from "erela.js"
 import Client from "./Client"
 
+interface Timeouts {
+    timeout: NodeJS.Timeout;
+    message: Message
+}
+
 export default class ArimaMusic extends Manager {
 
     client: Client
+    timeouts: Map<string, Timeouts>
 
     constructor(client: Client, nodes: NodeOptions[]) {
         super({
@@ -17,6 +23,7 @@ export default class ArimaMusic extends Manager {
         })
 
         this.client = client
+        this.timeouts = new Map()
 
         this.on("nodeConnect", async node => {
             console.log(`Lavalink conectado com sucesso!`)

@@ -25,6 +25,11 @@ module.exports = class Play extends Command {
         if (!voice?.channel) return message.channel.send(trans.voiceChannel)
 
         const player = this.client.music?.players.get(message.guild?.id as string)
+        if(message.guild.fm){
+            await message.guild?.me?.voice.channel?.leave()
+            this.client.fm = false
+            return message.channel.send(await this.client.getTranslate(message.guild?.id as string, "stop"))
+        }
 
         if (player && player.voiceChannel !== voice.channel.id) return message.channel.send(trans.myVoiceChannel)
 

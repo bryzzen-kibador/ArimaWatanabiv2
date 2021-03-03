@@ -120,6 +120,8 @@ export default class Arima extends discord.Client {
                 lang: gData?.lang || "en",
                 dj: gData?.dj || ""
             }
+
+            guild.fm = false;
         })
     }
 

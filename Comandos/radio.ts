@@ -38,6 +38,8 @@ module.exports = class Play extends Command{
       const connection = await voice.channel.join()
 
       connection.play("http://up-continental.webnow.com.br/cultura.mp3")
+      message.guild.fm = true
+      return message.channel.send(message.guild.guildCache?.lang == "pt" ? `🎶 Comecei a tocar!` : `🎶 I'm start to play!`)
       }catch(e){
           console.log(e)
       }
