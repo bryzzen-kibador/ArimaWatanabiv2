@@ -76,15 +76,15 @@ export default class ArimaMusic extends Manager {
         })
     }
 
-    init() {
-        return super.init("810127381683240980")
-    }
-
     async hasDj(user: GuildMember){
         let dj = user.guild.guildCache?.dj || ""
 
         if(!dj || dj == "") return false;
 
         return user.roles.cache.has(dj)
+    }
+
+    init() {
+        return super.init(`${this.client.user?.id}`)
     }
 }

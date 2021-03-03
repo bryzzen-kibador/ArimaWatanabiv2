@@ -55,7 +55,7 @@ module.exports = class Play extends Command{
             })
         }
 
-        const result = await this.client.music.search(args.join(" "), message.author)
+        const result = await this.client.music?.search(args.join(" "), message.author)
 
         if(result.loadType == "LOAD_FAILED"){
             return message.channel.send(trans.errorLoading).then(msg => msg.delete({timeout: 5000}))
@@ -83,17 +83,17 @@ module.exports = class Play extends Command{
             })
 
             if(!MPlayer.playing){
-                MPlayer.play()
+                MPlayer.play().catch((e) => console.log(e))
             }
             message.channel.send(message.guild.guildCache?.lang === "pt" ? `🎶 Playlist carregada! Duração: \`${this.client.utils.mstohour(playlist?.duration as number)}\`` : `🎶 Playlist loaded! Duration: \`${this.client.utils.mstohour(playlist?.duration as number)}\``).then(msg => msg.delete({timeout: 5000}))
             return;
         }else{
-            const tracks = result.tracks
+            const tracks = result?.tracks
 
             MPlayer.queue.add(tracks[0])
 
             if(!MPlayer.playing){
-                MPlayer.play()
+                MPlayer.play().catch((e) => console.log(e))
             }else{
                 return message.channel.send(message.guild.guildCache?.lang === "pt" ? `🎶 Adicionei \`${tracks[0].title}\` ao queue!` : `🎶 I added \`${tracks[0].title}\` to queue!`).then(msg => msg.delete({timeout: 5000}))
             }
