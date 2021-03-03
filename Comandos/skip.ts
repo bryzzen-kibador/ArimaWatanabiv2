@@ -42,7 +42,7 @@ module.exports = class Play extends Command {
                         return message.channel.send(message.guild.guildCache?.lang == "pt" ? `🎶 A lista de música acabou!` : `🎶 The queue is end!`).then(msg => msg.delete({ timeout: 5000 }))
                     }
 
-                    return message.channel.send(message.guild.guildCache?.lang == "pt" ? `🎶 Música Pulada!` : `🎶 Skipped!`)
+                    return message.channel.send(message.guild.guildCache?.lang == "pt" ? `🎶 Músicas Puladas!` : `🎶 Skipped!`)
                 } else {
                     if (message.guild.guidCache?.dj) {
                         if (await this.client.music?.hasDj(message.member)) {
@@ -53,7 +53,7 @@ module.exports = class Play extends Command {
                                 return message.channel.send(message.guild.guildCache?.lang == "pt" ? `🎶 A lista de música acabou!` : `🎶 The queue is end!`).then(msg => msg.delete({ timeout: 5000 }))
                             }
 
-                            return message.channel.send(message.guild.guildCache?.lang == "pt" ? `🎶 Música Pulada!` : `🎶 Skipped!`)
+                            return message.channel.send(message.guild.guildCache?.lang == "pt" ? `🎶 Músicas Puladas!` : `🎶 Skipped!`)
                         } else {
                             return message.channel.send(message.guild.guildCache?.lang == "pt" ? `❌ Apenas um DJ ou quem requisitou a música pode pula-lá!` : `❌ Only a DJ or whoever ordered the music can skip it!`).then(msg => msg.delete({ timeout: 5000 }))
                         }
@@ -65,7 +65,7 @@ module.exports = class Play extends Command {
                             return message.channel.send(message.guild.guildCache?.lang == "pt" ? `🎶 A lista de música acabou!` : `🎶 The queue is end!`).then(msg => msg.delete({ timeout: 5000 }))
                         }
 
-                        return message.channel.send(message.guild.guildCache?.lang == "pt" ? `🎶 Música Pulada!` : `🎶 Skipped!`).then(msg => msg.delete({ timeout: 5000 }))
+                        return message.channel.send(message.guild.guildCache?.lang == "pt" ? `🎶 Músicas Puladas!` : `🎶 Skipped!`).then(msg => msg.delete({ timeout: 5000 }))
 
                     }
                 }

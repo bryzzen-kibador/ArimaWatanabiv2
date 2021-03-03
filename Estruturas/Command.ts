@@ -18,7 +18,7 @@ export default class Command{
 
     name: string;
     aliases: string[];
-    usage?: usage | undefined;
+    usage?: usage;
     category: string;
 
     constructor(client: Client, options: Options) {
