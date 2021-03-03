@@ -26,7 +26,7 @@ module.exports = class Play extends Command {
 
         const player = this.client.music.players.get(message.guild?.id as string)
 
-        if (message.guild.fm) return message.channel.send(message.guild.guildCache?.lang == "pt" ? `❌ Já tocando o rádio no momento!` : `❌ I'm playing the radio right now!`)
+        if (message.guild.fm && voice.channel.id !== message.guild?.me?.voice.channel?.id) return message.channel.send(message.guild.guildCache?.lang == "pt" ? `❌ Já tocando o rádio no momento!` : `❌ I'm playing the radio right now!`)
 
         if (player) return message.channel.send(message.guild.guidlCache?.lang == "pt" ? `❌ Estou tocando música no momento!` : `❌ I'm playing music right now`).then(msg => msg.delete({ timeout: 5000 }))
 
@@ -47,7 +47,7 @@ module.exports = class Play extends Command {
                     .addField(`[PT] 4Drive Jazz`, `${message.guild.guildCache?.prefix}radio 4DriveJazz`, true)
                     .addField(`[FR] Chillofi Radio`, `${message.guild.guildCache?.prefix}radio ChillofiRadio`, true)
                     .addField(`[RU] Relax-FM`, `${message.guild.guildCache?.prefix}radio Relax`, true)
-                    .addField(`[MX] ¡Que Viva México!`, `${message.guild.guildCache?.prefix}radio mexico`, true)
+                    .addField(`[MX] ¡Que Viva México!`, `${message.guild.guildCache?.prefix}radio Mexico`, true)
                     .setFooter(message.author.tag, message.author.displayAvatarURL({ dynamic: true }))
 
                 const msg = await message.channel.send(embed)
