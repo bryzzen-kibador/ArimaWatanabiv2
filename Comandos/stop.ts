@@ -28,7 +28,7 @@ module.exports = class Play extends Command{
 
       if(!player && message.guild.fm){
           await message.guild?.me?.voice.channel?.leave()
-          this.client.fm = false
+          message.guild.fm = false
           return message.channel.send(await this.client.getTranslate(message.guild?.id as string, "stop"))
       }
 
