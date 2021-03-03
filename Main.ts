@@ -18,7 +18,6 @@ mongoose.connect(process.env.LINK as string, {
     console.error("Erro ao conectar", e)
 })
 
-client.loadEvents()
-client.loadCommands()
-client.loadGuilds()
+client.loadEvents().then(() => console.log("Eventos carregados!"))
+client.loadCommands().then(() => console.log("Comandos carregados!"))
 client.connectLavalink()

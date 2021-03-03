@@ -91,7 +91,7 @@ export default class Arima extends discord.Client {
         return super.login(token)
     }
 
-    loadEvents(): void {
+    async loadEvents(): Promise<void> {
         fs.readdirSync("./Eventos").forEach(file => {
             const evento = new (require(`../Eventos/${file}`))(this)
             const name = file.split(".")[0]
@@ -104,7 +104,7 @@ export default class Arima extends discord.Client {
         })
     }
 
-    loadCommands(): void {
+    async loadCommands(): Promise<void> {
         fs.readdirSync("./Comandos").forEach(file => {
             const comando = new (require(`../Comandos/${file}`))(this)
             this.commands.push(comando)
@@ -112,10 +112,8 @@ export default class Arima extends discord.Client {
     }
 
     async loadGuilds(): Promise<void> {
-        const guildsData = await this.gDB.find({})
-
-        this.guilds.cache.map((guild) => {
-            const gData = guildsData.find(g => g.id === guild.id)
+        this.guilds.cache.map(async (guild) => {
+            const gData = await this.gDB.findOne({id: String(guild.id)})
 
             guild.guildCache = {
                 prefix: gData?.prefix || "w!",
