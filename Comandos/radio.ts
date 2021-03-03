@@ -37,7 +37,7 @@ module.exports = class Play extends Command{
       try{
       const connection = await voice.channel.join()
 
-      connection.play("https://streamingv2.shoutcast.com/89-a-radio-rock-sao-paulo-")
+      connection.play("http://107-182-231-169.webnow.com.br/mundolivre.aac")
       }catch(e){
           console.log(e)
       }
