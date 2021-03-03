@@ -93,7 +93,7 @@ module.exports = class Play extends Command{
             if(!MPlayer.playing){
                 MPlayer.play()
             }else{
-                return message.channel.send(message.guild.guildCache?.lang === "pt" ? `🎶 Adicionei ao queue!` : `🎶 I added to queue!`).then(msg => msg.delete({timeout: 5000}))
+                return message.channel.send(message.guild.guildCache?.lang === "pt" ? `🎶 Adicionei \`${tracks[0].title}\` ao queue!` : `🎶 I added \`${tracks[0].title}\` to queue!`).then(msg => msg.delete({timeout: 5000}))
             }
         }
 
