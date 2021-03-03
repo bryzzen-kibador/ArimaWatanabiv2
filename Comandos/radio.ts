@@ -43,11 +43,16 @@ module.exports = class Play extends Command {
                 let embed = new this.client.utils.embed()
                     .setTitle(`Radio FM`)
                     .addField(`[BR] Mundo Livre`, `${message.guild.guildCache?.prefix}radio MundoLivre`, true)
+                    .addField(`[BR] Alternativa Livre`, `${message.guild.guildCache?.prefix}radio AlternativaLivre`, true)
+                    .addField(`[BR] Canção Nova`, `${message.guild.guildCache?.prefix}radio cancaonova`, true)
                     .addField(`[USA] Funk Corner Radio`, `${message.guild.guildCache?.prefix}radio FunkCornerRadio`, true)
                     .addField(`[PT] 4Drive Jazz`, `${message.guild.guildCache?.prefix}radio 4DriveJazz`, true)
+                    .addField(`[PT] Cidade FM`, `${message.guild.guildCache?.prefix}radio CidadeFM`, true)
                     .addField(`[FR] Chillofi Radio`, `${message.guild.guildCache?.prefix}radio ChillofiRadio`, true)
                     .addField(`[RU] Relax-FM`, `${message.guild.guildCache?.prefix}radio Relax`, true)
                     .addField(`[MX] ¡Que Viva México!`, `${message.guild.guildCache?.prefix}radio Mexico`, true)
+                    .addField(`[DE] 2000s on Radio on 2000s`, `${message.guild.guildCache?.prefix}radio 2000s`, true)
+                    .addField(`[IN] Radio Sangam Ganesha`, `${message.guild.guildCache?.prefix}radio sangam`, true)
                     .setFooter(message.author.tag, message.author.displayAvatarURL({ dynamic: true }))
 
                 const msg = await message.channel.send(embed)
@@ -75,6 +80,21 @@ module.exports = class Play extends Command {
                     break;
                 case "mexico":
                     link = "https://panel.retrolandigital.com:8160/listen";
+                    break;
+                case "cidadefm":
+                    link = "http://195.23.102.207/cidadefm"
+                    break;
+                case "alternativalivre":
+                    link = "http://node-17.zeno.fm/588dt1kykd0uv?rj-ttl=5&rj-tok=AAABd_lKfDsAKKWPWJgsbgZNLg"
+                    break;
+                case "cancaonova":
+                    link = "https://rdcuritiba-lh.akamaihd.net/i/rdcuritiba_1@190572/master.m3u8";
+                    break;
+                case "2000s":
+                    link = "http://0n-2000s.radionetz.de/0n-2000s.aac"
+                    break;
+                case "sangam":
+                    link = "http://radio2bindia.out.airtime.pro:8000/radio2bindia_a";
                     break;
                 default:
                     message.channel.send(message.guild.guildCache?.lang == "pt" ? `❌ Não encontrei esse rádio!` : `❌ I didn't find this radio`)
