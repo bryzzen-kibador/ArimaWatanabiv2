@@ -69,7 +69,9 @@ module.exports = class VoiceStateUpdate {
 
                     this.client.music?.timeouts.set(guild?.id as string, { timeout, message: msg })
                 }
-            }
+            }else {
+              oldState.channel.leave()
+           }
         }
 
     }
