@@ -50,7 +50,7 @@ module.exports = class Play extends Command{
 
       const msg = await message.channel.send(embed)
 
-      const collector = msg.channel.createMessageCollector((m: Message) => m.author.id == message.author.id, {time: 60*1000})
+      const collector = msg.channel.createMessageCollector((m: Message) => m.author.id == message.author.id, {time: 60*1000, max: 1})
 
       collector.on("end", (m) => {
           collector.stop()
@@ -81,6 +81,7 @@ module.exports = class Play extends Command{
                   break;
               default:
                   message.channel.send(message.guild.guildCache?.lang == "pt" ? `❌ Não encontrei esse rádio!` : `❌ I didn't find this radio`)
+                  collector.stop()
               break;
           }
       })
