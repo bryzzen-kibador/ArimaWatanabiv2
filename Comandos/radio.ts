@@ -2,8 +2,6 @@ import {Message} from "discord.js"
 import Command from "../Estruturas/Command"
 import Client from "../Estruturas/Client"
 import djso from "@discordjs/opus"
-import opus from "opusscript"
-import node from "@discordjs/node-pre-gyp"
 
 module.exports = class Play extends Command{
 
@@ -39,7 +37,7 @@ module.exports = class Play extends Command{
       try{
       const connection = await voice.channel.join()
 
-      connection.play("https://ais-sa2.cdnstream1.com/2447_192.mp3")
+      connection.play("https://streamingv2.shoutcast.com/89-a-radio-rock-sao-paulo-")
       }catch(e){
           console.log(e)
       }
