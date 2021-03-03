@@ -1,7 +1,7 @@
 import {Message} from "discord.js"
 import Command from "../Estruturas/Command"
 import Client from "../Estruturas/Client"
-import opus from "opusscript"
+import djso from "@discordjs/opus"
 
 module.exports = class Play extends Command{
 
