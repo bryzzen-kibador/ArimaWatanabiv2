@@ -85,6 +85,6 @@ export default class ArimaMusic extends Manager {
     }
 
     init() {
-        return super.init(`${this.client.user?.id}`)
+        return super.init(`810127381683240980`)
     }
 }
