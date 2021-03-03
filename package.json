@@ -20,11 +20,11 @@
     "ts-node-dev": "^1.1.6",
     "typescript": "^4.2.2",
     "opusscript": "^0.0.8",
-    "@discordjs/opus": "^0.4.0"
+    "@discordjs/opus": "^0.4.0",
+    "@discordjs/node-pre-gyp": "^0.2.0"
   },
   "devDependencies": {
     "@types/node": "^14.14.31",
-    "@discordjs/node-pre-gyp": "^0.2.0",
     "ts-node-dev": "^1.1.6",
     "typescript": "^4.2.2"
   }
