@@ -34,9 +34,13 @@ module.exports = class Play extends Command{
 
       if(!permissions.has("SPEAK")) return message.channel.send(trans.speak).then(msg => msg.delete({timeout: 5000}))
 
+      try{
       const connection = await voice.channel.join()
 
       connection.play("https://ais-sa2.cdnstream1.com/2447_192.mp3", {volume: 100})
+      }catch(e){
+          console.log(e)
+      }
 
     }
 }
