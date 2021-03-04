@@ -140,4 +140,27 @@ export default class Arima extends discord.Client {
 
         this.on("raw", d => this.music?.updateVoiceState(d))
     }
+
+    async status(): Promise<void> {
+        let arr = [
+            {
+                name: "Hello, my name is Arima ❤",
+                type: "PLAYING"
+            },
+            {
+                name: `for ${this.music?.players.size} players`,
+                type: `LISTENING`
+            },
+            {
+                name: `My default prefix is w!`,
+                type: `WATCHING`
+            }
+        ]
+        
+        this.user?.setActivity(arr[(Math.random() * arr.length).toFixed(2)])
+
+        setInterval(() => {
+          this.user?.setActivity(arr[(Math.random() * arr.length).toFixed(2)])
+        }, 1 * 60 * 1000)
+    }
 }
