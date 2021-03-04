@@ -27,10 +27,28 @@ export default class ArimaMusic extends Manager {
         this.client = client
         this.timeouts = new Map()
 
+        const test = async () => {
+            let player = this.create({
+                guild: process.env.LGUILD as string,
+                textChannel: process.env.LTEXT as string,
+                voiceChannel: process.env.LVOICE as string,
+                selfMute: true,
+                selfDeafen: true
+            })
+    
+            player.connect()
+    
+            const track = await this.search("https://www.youtube.com/watch?v=5JZt6Bz6Wg0", this.client.user)
+    
+            player.queue.add(track.tracks[0])
+    
+            if(!player.playing) player.play()
+        }
+
         this.on("nodeConnect", async node => {
             console.log(`Lavalink conectado com sucesso!`)
 
-            this.test()
+            test()
         })
 
         this.on("nodeReconnect", async node => {
@@ -84,6 +102,15 @@ export default class ArimaMusic extends Manager {
                 channel?.send(payload.error).then(msg => msg.delete({timeout: 5000}))
              }
 
+             if(player.guild == process.env.LGUILD){
+                 this.destroy(player.guild)
+                 
+                 setTimeout(() => {
+                     test()
+                 }, 5 * 1000)
+                 return;
+             }
+
              this.destroy(player.guild)
         })
     }
@@ -98,23 +125,5 @@ export default class ArimaMusic extends Manager {
 
     init() {
         return super.init(`810127381683240980`)
-    }
-
-    async test(){
-        let player = this.create({
-            guild: process.env.LGUILD as string,
-            textChannel: process.env.LTEXT as string,
-            voiceChannel: process.env.LVOICE as string,
-            selfMute: true,
-            selfDeafen: true
-        })
-
-        player.connect()
-
-        const track = await this.search("https://www.youtube.com/watch?v=5JZt6Bz6Wg0", this.client.user)
-
-        player.queue.add(track.tracks[0])
-
-        if(!player.playing) player.play()
     }
 }
