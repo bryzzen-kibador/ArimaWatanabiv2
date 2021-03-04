@@ -3,7 +3,7 @@ import Command from "../Estruturas/Command"
 import Client from "../Estruturas/Client"
 import djso from "@discordjs/opus"
 
-module.exports = class Play extends Command {
+module.exports = class Radio extends Command {
 
     client: Client
 

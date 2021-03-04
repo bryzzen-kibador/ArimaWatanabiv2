@@ -2,7 +2,7 @@ import { Message } from "discord.js"
 import Command from "../Estruturas/Command"
 import Client from "../Estruturas/Client"
 
-module.exports = class Play extends Command {
+module.exports = class Skip extends Command {
 
     client: Client
 

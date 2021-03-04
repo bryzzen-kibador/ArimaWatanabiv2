@@ -3,7 +3,7 @@ import Command from "../Estruturas/Command"
 import Client from "../Estruturas/Client"
 import { Player } from "erela.js"
 
-module.exports = class Play extends Command{
+module.exports = class Stop extends Command{
 
     client: Client
 
