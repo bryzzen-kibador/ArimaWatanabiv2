@@ -9,6 +9,7 @@ module.exports = class Ready{
 
     async execute(){
         await this.client.loadGuilds()
+        await this.client.status()
         console.log(this.client.user?.username + " Iniciado com sucesso!")
     }
 }
