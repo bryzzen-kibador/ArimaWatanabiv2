@@ -157,10 +157,12 @@ export default class Arima extends discord.Client {
             }
         ]
         
-        this.user?.setActivity(arr[(Math.random() * arr.length).toFixed(2)])
+        this.user?.setActivity(arr[Math.floor(Math.random() * arr.length)])
+        console.log("Status modificado")
 
         setInterval(() => {
-          this.user?.setActivity(arr[(Math.random() * arr.length).toFixed(2)])
+          this.user?.setActivity(arr[Math.floor(Math.random() * arr.length)])
+          console.log("Status modificado")
         }, 1 * 60 * 1000)
     }
 }
