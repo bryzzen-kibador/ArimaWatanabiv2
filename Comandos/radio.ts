@@ -43,18 +43,18 @@ module.exports = class Play extends Command {
                 let embed = new this.client.utils.embed()
                     .setTitle(`Radio FM`)
                     .setDescription(message.guild.guildCache?.lang == "pt" ? `${message.guild.fm == true ? `🎶 Sintonizado na radio: ${message.guild.fmRadio}` : `🎶 Tuned to the radio: ${message.guild.fmRadio}`}` : ``)
-                    .addField(`[BR] Mundo Livre`, `${message.guild.guildCache?.prefix}radio MundoLivre`, true)
-                    .addField(`[BR] Alternativa Livre`, `${message.guild.guildCache?.prefix}radio AlternativaLivre`, true)
-                    .addField(`[BR] Canção Nova`, `${message.guild.guildCache?.prefix}radio CancaoNova`, true)
-                    .addField(`[USA] Funk Corner Radio`, `${message.guild.guildCache?.prefix}radio FunkCornerRadio`, true)
-                    .addField(`[PT] 4Drive Jazz`, `${message.guild.guildCache?.prefix}radio 4DriveJazz`, true)
-                    .addField(`[PT] Cidade FM`, `${message.guild.guildCache?.prefix}radio CidadeFM`, true)
-                    .addField(`[FR] Chillofi Radio`, `${message.guild.guildCache?.prefix}radio ChillofiRadio`, true)
-                    .addField(`[RU] Relax-FM`, `${message.guild.guildCache?.prefix}radio Relax`, true)
-                    .addField(`[MX] ¡Que Viva México!`, `${message.guild.guildCache?.prefix}radio Mexico`, true)
-                    .addField(`[DE] 2000s on Radio on 2000s`, `${message.guild.guildCache?.prefix}radio 2000s`, true)
-                    .addField(`[IN] Radio Sangam Ganesha`, `${message.guild.guildCache?.prefix}radio Sangam`, true)
-                    .setFooter(message.author.tag, message.author.displayAvatarURL({ dynamic: true }))
+                    .addField(`[BR] Mundo Livre`, `Tags: Rock, Pop, Funk`, true)
+                    .addField(`[BR] Alternativa Livre`, `Tags: Free, Alternative `, true)
+                    .addField(`[BR] Canção Nova`, `Tags: Religion, Catholic`, true)
+                    .addField(`[USA] Funk Corner Radio`, `Tags: Funk, R&B, Disco, 70s, 80s, Soul, Black Music, Music ...`, true)
+                    .addField(`[PT] 4Drive Jazz`, `Tags: Jazz Fusion, Nu-Jazz, Dmooth Jazz`, true)
+                    .addField(`[PT] Cidade FM`, `Tags: Rock, Pop, Funk`, true)
+                    .addField(`[FR] Chillofi Radio`, `Tags: Easy Listening, Urban, Hiphop, Lofi, Chill, Chillout`, true)
+                    .addField(`[RU] Relax-FM`, `Tags: Rock, Pop, Funk`, true)
+                    .addField(`[MX] ¡Que Viva México!`, `Tags: Mexican Music`, true)
+                    .addField(`[DE] 2000s on Radio on 2000s`, `Tags: Adult Contemporary, Urban, R'n'B, Hiphop, Dance, Rock, Hits, Pop, 2000er, 2000s`, true)
+                    .addField(`[IN] Radio Sangam Ganesha`, `Tags: Mantra, Spiritual`, true)
+                    .setFooter(`Use: ${message.guild.guildCache?.prefix}radio <Radio>`, message.author.displayAvatarURL({ dynamic: true }))
 
                 const msg = await message.channel.send(embed)
                 return;
@@ -62,9 +62,10 @@ module.exports = class Play extends Command {
 
             let link = ""
             let radio = ""
+            let r = args.join(" ")
 
 
-            switch (args[0].toLowerCase()) {
+            switch (r.trim().toLowerCase()) {
                 case "mundolivre":
                     link = "http://up-continental.webnow.com.br/cultura.mp3"
                     radio = "MundoLivre"
