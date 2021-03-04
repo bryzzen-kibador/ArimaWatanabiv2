@@ -74,7 +74,7 @@ module.exports = class VoiceStateUpdate {
                 }
             }
 
-            If(fm){
+            if(fm){
                 if (oldState.member.id == this.client.user?.id){
                 oldState.guild.fm = false
                 return;
