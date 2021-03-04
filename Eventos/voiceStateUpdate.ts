@@ -1,5 +1,7 @@
 import Client from "../Estruturas/Client"
 import { VoiceState } from "discord.js"
+import {config} from "dotenv"
+config()
 
 module.exports = class VoiceStateUpdate {
     client: Client
@@ -44,7 +46,8 @@ module.exports = class VoiceStateUpdate {
             }
 
             if (player) {
-                if (newState.member?.id === this.client.user?.id) {
+                if (oldState.member?.id === this.client.user?.id) {
+                    if(oldState.guild.id == process.env.LGUILD) return;
                     let channel = this.client.channels.cache.get(player?.textChannel as string)
                     channel?.send(guild.guildCache?.lang === "pt" ? `❌ Eu fui desconectada então apaguei o queue` : `❌ I was disconnected so I deleted the queue`)
                     player?.destroy()
