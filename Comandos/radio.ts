@@ -70,8 +70,8 @@ module.exports = class Play extends Command {
                     radio = "MundoLivre"
                     break;
                 case "funkcornerradio":
-                    link = "https://ais-sa2.cdnstream1.com/2447_192.mp3";
-                    radio "FunkCornerRadio";
+                    link = "https://ais-sa2.cdnstream1.com/2447_192.mp3"
+                    radio = "FunkCornerRadio"
                     break;
                 case "4drivejazz":
                     link = "http://radio.streemlion.com:1150/stream";
@@ -79,7 +79,7 @@ module.exports = class Play extends Command {
                     break;
                 case "chillofiradio":
                     link = "http://streaming.radionomy.com/JamendoLounge"
-                    radio = "ChillofiRadio";
+                    radio = "ChillofiRadio"
                     break;
                 case "relax":
                     link = "http://ic4.101.ru:8000/stream/air/aac/64/200"
