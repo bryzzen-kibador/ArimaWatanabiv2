@@ -2,6 +2,7 @@ import { Message, GuildMember } from "discord.js"
 import { Manager, NodeOptions } from "erela.js"
 import Client from "./Client"
 import {config} from "dotenv"
+import Spotify from "erela.js-spotify"
 config()
 
 interface Timeouts {
@@ -21,7 +22,13 @@ export default class ArimaMusic extends Manager {
                 const guild = client.guilds.cache.get(id)
                 if (guild) guild.shard.send(payload)
             },
-            autoPlay: true
+            autoPlay: true,
+            plugins: [
+                new Spotify({
+                    clientID: process.env.CID as string,
+                    clientSecret: process.env.CS as string
+                })
+            ]
         })
 
         this.client = client
