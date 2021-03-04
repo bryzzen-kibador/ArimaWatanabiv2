@@ -27,7 +27,7 @@ module.exports = class Play extends Command{
 
       const player = this.client.music.players.get(message.guild?.id as string)
 
-      if(message.guild.fm) return message.channel.send(message.guild.guildCache?.lang == "pt" ? `❌ Estou tocando o rádio no momento!` : `❌ I'm playing the radio right now!`)
+      if(message.guild.fm) return message.channel.send(message.guild.guildCache?.lang == "pt" ? `❌ Estou tocando rádio no momento!` : `❌ I'm playing the radio right now!`)
 
       if(player && player.voiceChannel !== voice.channel.id) return message.channel.send(trans.myVoiceChannel).then(msg => msg.delete({timeout: 5000}))
 

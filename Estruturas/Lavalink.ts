@@ -1,6 +1,8 @@
 import { Message, GuildMember } from "discord.js"
 import { Manager, NodeOptions } from "erela.js"
 import Client from "./Client"
+import {config} from "dotenv"
+config()
 
 interface Timeouts {
     timeout: NodeJS.Timeout;
@@ -27,6 +29,8 @@ export default class ArimaMusic extends Manager {
 
         this.on("nodeConnect", async node => {
             console.log(`Lavalink conectado com sucesso!`)
+
+            this.test()
         })
 
         this.on("nodeReconnect", async node => {
@@ -42,6 +46,14 @@ export default class ArimaMusic extends Manager {
         })
 
         this.on("trackStart", async (player, track) => {
+
+            if(player.guild == process.env.LGUILD){
+                setTimeout(() => {
+                    player.pause(true)
+                }, 3 * 1000)
+                return;
+            }
+
             if (!player.textChannel) return;
 
             let channel = this.client.channels.cache.get(player.textChannel)
@@ -86,5 +98,23 @@ export default class ArimaMusic extends Manager {
 
     init() {
         return super.init(`810127381683240980`)
+    }
+
+    async test(){
+        let player = this.create({
+            guild: process.env.LGUILD as string,
+            textChannel: process.env.LTEXT as string,
+            voiceChannel: process.env.LVOICE as string,
+            selfMute: true,
+            selfDeafen: true
+        })
+
+        player.connect()
+
+        const track = await this.search("https://www.youtube.com/watch?v=5JZt6Bz6Wg0", this.client.user)
+
+        player.queue.add(track.tracks[0])
+
+        if(!player.playing) player.play()
     }
 }
