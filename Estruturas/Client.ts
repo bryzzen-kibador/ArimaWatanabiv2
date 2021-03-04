@@ -113,7 +113,7 @@ export default class Arima extends discord.Client {
 
     async loadGuilds(): Promise<void> {
         this.guilds.cache.map(async (guild) => {
-            const gData = await this.gDB.findOne({id: String(guild.id)})
+            const gData = await this.gDB.findOne({_id: String(guild.id)})
 
             guild.guildCache = {
                 prefix: gData?.prefix || "w!",
