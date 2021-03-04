@@ -60,7 +60,7 @@ module.exports = class VoiceStateUpdate {
                     return;
                 }
 
-                if (oldState.channel.id == player.voiceChannel && !oldState.channel.members.filter(f => !f.user.bot).size) {
+                if (oldState.channel.id == player.voiceChannel && oldState.channel.members.filter(f => !f.user.bot).size == 0) {
                     player.pause(true)
                     const msg = await this.client.channels.cache.get(player?.textChannel as string)?.send(guild.guildCache?.lang === "pt" ? `❌ Fiquei sozinha, se ninguem aparecer dentro de 2 minutos vou meter o pé` : `❌ I was alone, if nobody shows up within 2 minutes I’ll put my foot in`)
                     const timeout = setTimeout(() => {
@@ -73,8 +73,9 @@ module.exports = class VoiceStateUpdate {
                     this.client.music?.timeouts.set(guild?.id as string, { timeout, message: msg })
                 }
             }else{
-                if(oldState.channel.id == oldState.guild.me?.voice.channel?.id && !oldState.channel.members.filter(f => !f.user.bot).size){
+                if(oldState.channel.id == oldState.guild.me?.voice.channel?.id && oldState.channel.members.filter(f => !f.user.bot).size == 0){
                 oldState.channel.leave()
+                newState.channel.leave()
                 oldState.guild.fm = false
                 }
             }
