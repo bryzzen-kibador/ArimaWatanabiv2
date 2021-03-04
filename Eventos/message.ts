@@ -56,7 +56,7 @@ module.exports = class Msg {
       let cmds: string[] = [];
       let qual = ""
 
-      this.client.commands.forEach((cmd) => {
+      this.client.commands.filter(f => f.category !== "desenvolvedor").forEach((cmd) => {
         if(cmd.category === "desenvolvedor"){
           if(message.author.id == "719986033583849502"){
             cmds = cmds.concat(cmd.aliases.concat([cmd.name]))
