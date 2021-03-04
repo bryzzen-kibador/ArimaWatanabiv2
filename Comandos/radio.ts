@@ -122,6 +122,7 @@ module.exports = class Radio extends Command {
             connection.play(link)
             message.guild.fmRadio = radio;
             message.guild.fm = true
+            message.guild.conn = connection
             return message.channel.send(message.guild.guildCache?.lang == "pt" ? `🎶 Comecei a tocar!` : `🎶 I'm start to play!`)
 
         } catch (e) {
