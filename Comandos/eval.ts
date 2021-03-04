@@ -49,7 +49,7 @@ module.exports = class Eval extends Command {
       return message.channel.send(`\`\`\`js\n${inspect(evaled, { depth: 0 })}\`\`\``)
 
     } catch (e) {
-      return message.channel.send(e)
+      return message.channel.send(`\`\`\`js\n${inspect(e, {depth: 0})}\`\`\``)
     }
   }
 }
