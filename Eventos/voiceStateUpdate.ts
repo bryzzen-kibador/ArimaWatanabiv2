@@ -72,11 +72,18 @@ module.exports = class VoiceStateUpdate {
 
                     this.client.music?.timeouts.set(guild?.id as string, { timeout, message: msg })
                 }
-            }else{
-                if(oldState.channel.id == oldState.guild.me?.voice.channel?.id && oldState.channel.members.filter(f => !f.user.bot).size == 0){
-                oldState.channel.leave()
-                newState.channel.leave()
+            }
+
+            If(fm){
+                if (oldState.member.id == this.client.user?.id){
                 oldState.guild.fm = false
+                return;
+                }
+                if(oldState.channel.id == oldState.guild.me?.voice.channel?.id && oldState.channel.members.filter(f => !f.user.bot).size == 0){
+                oldState.channel.leave().then(() => {})
+                newState.channel.leave().then(() => {})
+                oldState.guild.fm = false
+                return;
                 }
             }
         }
