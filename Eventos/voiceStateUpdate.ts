@@ -14,7 +14,7 @@ module.exports = class VoiceStateUpdate {
         if (!oldState.channel && newState.channel) {
             //entrou
 
-            const player = this.client.music?.players.get(newState.guild.id);
+            const player = this.client.music?.players.get(oldState.guild.id);
 
             const fm = newState.guild.fm
 
@@ -37,7 +37,7 @@ module.exports = class VoiceStateUpdate {
         } else if (oldState.channel && !newState.channel) {
             const player = this.client.music?.players.get(newState.guild.id);
 
-            let guild = this.client.guilds.cache.get(player?.guild)
+            let guild = oldState.guild
 
             const fm = guild?.fm
 
@@ -80,10 +80,14 @@ module.exports = class VoiceStateUpdate {
                 return;
                 }
                 if(oldState.channel.id == oldState.guild.me?.voice.channel?.id && oldState.channel.members.filter(f => !f.user.bot).size == 0){
+                try {
                 oldState.guild.conn.disconnect().then(() => {})
                 oldState.channel.leave().then(() => {})
                 newState.channel.leave().then(() => {})
                 oldState.guild.fm = false
+                }catch(e){
+                console.error(e)
+                }
                 return;
                 }
             }
