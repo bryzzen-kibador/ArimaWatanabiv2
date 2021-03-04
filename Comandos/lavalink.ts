@@ -8,9 +8,9 @@ module.exports = class Lavalink extends Command {
 
     constructor(client: Client) {
         super(client, {
-            name: "ping",
-            aliases: ["pong"],
-            category: "utilidade"
+            name: "lavalink",
+            aliases: ["lava"],
+            category: "musica"
         })
         this.client = client
     }
