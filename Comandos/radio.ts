@@ -42,7 +42,7 @@ module.exports = class Play extends Command {
 
                 let embed = new this.client.utils.embed()
                     .setTitle(`Radio FM`)
-                    .setDescription(message.guild.guildCache?.lang == "pt" ? `${message.guild.fm ? `🎶 Sintonizado na radio: ${message.guild.fmRadio}` : `🎶 Tuned to the radio: ${message.guild.fmRadio}`}` : ``)
+                    .setDescription(message.guild.guildCache?.lang == "pt" ? `${message.guild.fm == true ? `🎶 Sintonizado na radio: ${message.guild.fmRadio}` : `🎶 Tuned to the radio: ${message.guild.fmRadio}`}` : ``)
                     .addField(`[BR] Mundo Livre`, `${message.guild.guildCache?.prefix}radio MundoLivre`, true)
                     .addField(`[BR] Alternativa Livre`, `${message.guild.guildCache?.prefix}radio AlternativaLivre`, true)
                     .addField(`[BR] Canção Nova`, `${message.guild.guildCache?.prefix}radio CancaoNova`, true)
