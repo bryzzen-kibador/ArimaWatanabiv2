@@ -65,7 +65,7 @@ module.exports = class Radio extends Command {
             let r = args.join(" ")
 
 
-            switch (r.trim().toLowerCase()) {
+            switch (r.replace(/\s/g, "").toLowerCase()) {
                 case "mundolivre":
                     link = "http://up-continental.webnow.com.br/cultura.mp3"
                     radio = "MundoLivre"
