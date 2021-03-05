@@ -1,0 +1,4 @@
+node_modules
+.gitignore
+.env
+package-lock.json

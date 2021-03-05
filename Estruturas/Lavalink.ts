@@ -83,7 +83,7 @@ export default class ArimaMusic extends Manager {
 
             let channel = this.client.channels.cache.get(player.textChannel)
             let guild = this.client.guilds.cache.get(player.guild)
-            return channel?.send(guild.guildCache?.lang == "pt" ? `🎵 Música: \`${track.title}\` de: \`${track.author}\` começou a tocar!` : `🎵 Music: \`${track.title}\` by: \`${track.author}\` started!`).then(msg => msg.delete({timeout: 5000}))
+            return channel?.send({embed: {description: guild.guildCache?.lang == "pt" ? `🎵 Música: \`${track.title}\` de: \`${track.author}\` começou a tocar!` : `🎵 Music: \`${track.title}\` by: \`${track.author}\` started!`, color: "#7b00ff"}})
         })
 
         this.on("queueEnd", async (player, track) => {
@@ -92,7 +92,7 @@ export default class ArimaMusic extends Manager {
             let channel = this.client.channels.cache.get(player.textChannel)
             let guild = this.client.guilds.cache.get(player.guild)
 
-            channel?.send(guild.guildCache?.lang == "pt" ? `🎶 Minha lista acabou!` : `🎶 The queue end!`).then(msg => msg.delete({timeout: 5000}))
+            channel?.send(guild.guildCache?.lang == "pt" ? `🎶 Minha lista acabou!` : `🎶 The queue end!`)
             player.destroy()
         })
 
