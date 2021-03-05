@@ -14,4 +14,8 @@ const guild = new Schema({
     dj: String
 })
 
+<<<<<<< HEAD
 export default model<Guild>("Guild", guild)
+=======
+export default model<Guild>("Guild", guild)
+>>>>>>> v1

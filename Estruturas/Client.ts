@@ -140,6 +140,7 @@ export default class Arima extends discord.Client {
 
         this.on("raw", d => this.music?.updateVoiceState(d))
     }
+<<<<<<< HEAD
 
     async status(): Promise<void> {
         let arr = [
@@ -166,3 +167,6 @@ export default class Arima extends discord.Client {
         }, 1 * 60 * 1000)
     }
 }
+=======
+}
+>>>>>>> v1
