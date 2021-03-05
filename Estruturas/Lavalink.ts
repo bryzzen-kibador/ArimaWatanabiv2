@@ -29,7 +29,6 @@ export default class ArimaMusic extends Manager {
                     clientSecret: process.env.CS as string
                 })
             ]
-            autoPlay: true
         })
 
         this.client = client
