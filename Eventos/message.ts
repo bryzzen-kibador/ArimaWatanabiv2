@@ -53,8 +53,8 @@ module.exports = class Msg {
 
     let translate = await this.client.getTranslate(message.guild?.id as string, "error")
     if (!cmd){
-      if(Object.keys(process.env.EASTEREGGS).includes(cmdName)){
-        let res = JSON.parse(process.env.EASTEREGGS)
+      if(Object.keys(JSON.parse(JSON.stringify(process.env.EASTEREGGS))).includes(cmdName)){
+        let res = JSON.parse(JSON.stringify(process.env.EASTEREGGS))
         return message.channel.send(res[cmdName])
       }
       let cmds: string[] = [];
