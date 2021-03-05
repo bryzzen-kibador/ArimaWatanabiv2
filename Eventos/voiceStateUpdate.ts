@@ -13,12 +13,7 @@ module.exports = class VoiceStateUpdate {
     async execute(oldState: VoiceState, newState: VoiceState) {
         if (!oldState.channel && newState.channel) {
             //entrou
-
-<<<<<<< HEAD
             const player = this.client.music?.players.get(oldState.guild.id);
-=======
-            const player = this.client.music?.players.get(newState.guild.id);
->>>>>>> v1
 
             const fm = newState.guild.fm
 
@@ -41,11 +36,7 @@ module.exports = class VoiceStateUpdate {
         } else if (oldState.channel && !newState.channel) {
             const player = this.client.music?.players.get(newState.guild.id);
 
-<<<<<<< HEAD
             let guild = oldState.guild
-=======
-            let guild = this.client.guilds.cache.get(player?.guild)
->>>>>>> v1
 
             const fm = guild?.fm
 
@@ -68,11 +59,7 @@ module.exports = class VoiceStateUpdate {
                     return;
                 }
 
-<<<<<<< HEAD
                 if (oldState.channel.id == player.voiceChannel && oldState.channel.members.filter(f => !f.user.bot).size == 0) {
-=======
-                if (oldState.channel.id == player.voiceChannel && !oldState.channel.members.filter(f => !f.user.bot).size) {
->>>>>>> v1
                     player.pause(true)
                     const msg = await this.client.channels.cache.get(player?.textChannel as string)?.send(guild.guildCache?.lang === "pt" ? `❌ Fiquei sozinha, se ninguem aparecer dentro de 2 minutos vou meter o pé` : `❌ I was alone, if nobody shows up within 2 minutes I’ll put my foot in`)
                     const timeout = setTimeout(() => {
@@ -84,7 +71,6 @@ module.exports = class VoiceStateUpdate {
 
                     this.client.music?.timeouts.set(guild?.id as string, { timeout, message: msg })
                 }
-<<<<<<< HEAD
             }
 
             if(fm){
@@ -101,12 +87,6 @@ module.exports = class VoiceStateUpdate {
                 console.error(e)
                 }
                 return;
-=======
-            }else{
-                if(oldState.channel.id == oldState.guild.me?.voice.channel?.id && !oldState.channel.members.filter(f => !f.user.bot).size){
-                oldState.channel.leave()
-                oldState.guild.fm = false
->>>>>>> v1
                 }
             }
         }
