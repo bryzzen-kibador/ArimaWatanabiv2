@@ -166,4 +166,3 @@ export default class Arima extends discord.Client {
         }, 1 * 60 * 1000)
     }
 }
-}
