@@ -83,7 +83,6 @@ module.exports = class VoiceStateUpdate {
                 try {
                 oldState.guild.conn.disconnect().then(() => {})
                 oldState.channel.leave().then(() => {})
-                newState.channel.leave().then(() => {})
                 oldState.guild.fm = false
                 }catch(e){
                 console.error(e)
