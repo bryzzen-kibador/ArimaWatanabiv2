@@ -16,6 +16,6 @@ module.exports = class Ping extends Command{
     }
 
     async execute(message: Message, args: string[]){
-      return message.channel.send(~~(this.client.ws.ping)+"ms")
+      return message.channel.send({embed: {description: ~~(this.client.ws.ping)+"ms", color: "#7b00ff"}})
     }
 }

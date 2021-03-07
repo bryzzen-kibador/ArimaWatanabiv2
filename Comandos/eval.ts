@@ -24,7 +24,7 @@ module.exports = class Eval extends Command {
       let prefix = message.guild.guildCache?.prefix
       let cmdName = "eval"
 
-      this.client.commands.forEach((cmd) => {
+      this.client.commands.filter(f => f.category != "desenvolvedor").forEach((cmd) => {
         cmds = cmds.concat(cmd.aliases.concat([cmd.name]))
 
         let distancia = Infinity

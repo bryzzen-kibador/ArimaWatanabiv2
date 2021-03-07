@@ -44,6 +44,9 @@ module.exports = class Play extends Command{
             return message.channel.send(`❌ Use: ${message.guild.guildCache?.prefix}${message.content.split(" ")[0].slice(message.guild.guildCache?.prefix.length)} ${this.usage[message.guild.guildCache?.lang]}`).then(msg => msg.delete({timeout: 5000}))
           }
       }
+
+      
+      
       try{
 
         let create = (): Player => {
@@ -85,7 +88,7 @@ module.exports = class Play extends Command{
             if(!MPlayer.playing){
                 MPlayer.play().catch((e) => console.log(e))
             }
-            message.channel.send(message.guild.guildCache?.lang === "pt" ? `🎶 Playlist carregada! Duração: \`${this.client.utils.mstohour(playlist?.duration as number)}\`` : `🎶 Playlist loaded! Duration: \`${this.client.utils.mstohour(playlist?.duration as number)}\``).then(msg => msg.delete({timeout: 5000}))
+            message.channel.send({embed: {description: message.guild.guildCache?.lang === "pt" ? `🎶 Playlist carregada! Duração: \`${this.client.utils.mstohour(playlist?.duration as number)}\`` : `🎶 Playlist loaded! Duration: \`${this.client.utils.mstohour(playlist?.duration as number)}\``, color: "#7b00ff"}})
             return;
         }else{
             const tracks = result?.tracks
@@ -95,7 +98,7 @@ module.exports = class Play extends Command{
             if(!MPlayer.playing){
                 MPlayer.play().catch((e) => console.log(e))
             }else{
-                return message.channel.send(message.guild.guildCache?.lang === "pt" ? `🎶 Adicionei \`${tracks[0].title}\` ao queue!` : `🎶 I added \`${tracks[0].title}\` to queue!`).then(msg => msg.delete({timeout: 5000}))
+                return message.channel.send({embed: {description: message.guild.guildCache?.lang === "pt" ? `🎶 Adicionei \`${tracks[0].title}\` ao queue!` : `🎶 I added \`${tracks[0].title}\` to queue!`, color: "#7b00ff"}})
             }
         }
 

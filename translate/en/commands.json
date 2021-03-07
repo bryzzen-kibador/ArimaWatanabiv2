@@ -10,7 +10,9 @@
         "description": "My prefix in this guild is w!",
         "name": "> Name",
         "alias": "> Aliases",
-        "usage": "> Usage"
+        "usage": "> Usage",
+        "fieldN": "[😈] NSFW Commands",
+        "nonsfw": "❌ Nsfw commands is disable in this server"
     },
     "play": {
         "voiceChannel": "❌ You are not on a voice channel",

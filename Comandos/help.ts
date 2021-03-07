@@ -20,7 +20,7 @@ module.exports = class Help extends Command {
   async execute(message: Message, args: string[]) {
     if (!args[0]) {
 
-      let prefix = await message.guild.guildCache?.prefix || "w!"
+      let prefix = message.guild.guildCache?.prefix || "w!"
 
       let trad = await this.client.getTranslate(message.guild?.id as string, "help")
       let embed = new this.client.utils.embed()
@@ -28,7 +28,9 @@ module.exports = class Help extends Command {
       embed.setTitle(trad.title)
       embed.addField(trad.fieldI, "\`\`\`" + this.client.commands.filter(f => f.category === "utilidade").map(f => f.name).join(", ") + "\`\`\`")
       embed.addField(trad.fieldM, "\`\`\`" + this.client.commands.filter(f => f.category === "musica").map(f => f.name).join(", ")+"\`\`\`")
-
+      if(message.guild.guildCache?.nsfw){
+        embed.addField(trad.fieldN, "\`\`\`" + this.client.commands.filter(f => f.category == "nsfw").join(", ") + "\`\`\`")
+      }
       return message.channel.send(embed)
 
     } else {
@@ -44,6 +46,10 @@ module.exports = class Help extends Command {
 
 
         return message.channel.send(embed)
+      }
+
+      if(cmd.category == "nsfw" && !message.guild.guildCache?.nsfw){
+        return message.channel.send({embed: {description: trad.nonsfw, color: "#7b00ff"}})
       }
 
       let embed = new this.client.utils.embed()

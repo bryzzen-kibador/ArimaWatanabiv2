@@ -118,7 +118,8 @@ export default class Arima extends discord.Client {
             guild.guildCache = {
                 prefix: gData?.prefix || "w!",
                 lang: gData?.lang || "en",
-                dj: gData?.dj || ""
+                dj: gData?.dj || "",
+                nsfw: gData?.nsfw || false
             }
 
             guild.fm = false;

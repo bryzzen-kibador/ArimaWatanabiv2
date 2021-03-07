@@ -10,7 +10,9 @@
         "description": "Meu prefix nesse servidor é w!",
         "name": "> Nome",
         "alias": "> Alternativas",
-        "usage": "> Exemplo"
+        "usage": "> Exemplo",
+        "fieldN": "[😈] Comandos NSFW",
+        "nonsfw": "❌ Comandos de nsfw estão desativados neste servidor"
     },
     "play": {
         "voiceChannel": "❌ Você não está em um canal de voz",

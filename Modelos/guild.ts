@@ -5,13 +5,15 @@ interface Guild extends Document {
     prefix?: string;
     lang: string;
     dj: string;
+    nsfw: boolean;
 }
 
 const guild = new Schema({
     id: String,
     prefix: String,
     lang: String,
-    dj: String
+    dj: String,
+    nsfw: Boolean
 })
 
 export default model<Guild>("Guild", guild)
