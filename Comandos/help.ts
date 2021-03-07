@@ -29,7 +29,7 @@ module.exports = class Help extends Command {
       embed.addField(trad.fieldI, "\`\`\`" + this.client.commands.filter(f => f.category === "utilidade").map(f => f.name).join(", ") + "\`\`\`")
       embed.addField(trad.fieldM, "\`\`\`" + this.client.commands.filter(f => f.category === "musica").map(f => f.name).join(", ")+"\`\`\`")
       if(message.guild.guildCache?.nsfw){
-        embed.addField(trad.fieldN, "\`\`\`" + this.client.commands.filter(f => f.category == "nsfw").join(", ") + "\`\`\`")
+        embed.addField(trad.fieldN, "\`\`\`" + this.client.commands.filter(f => f.category == "nsfw").map(f => f.name).join(", ") + "\`\`\`")
       }
       return message.channel.send(embed)
 
