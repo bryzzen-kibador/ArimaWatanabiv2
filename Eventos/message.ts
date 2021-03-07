@@ -60,19 +60,20 @@ module.exports = class Msg {
       let cmds: string[] = [];
       let qual = ""
 
-      this.client.commands.filter(f => f.category !== "desenvolvedor").forEach((cmd) => {
-        if(cmd.category === "desenvolvedor"){
+      this.client.commands.filter(f => f.category !== "desenvolvedor").map((cmd) => {
+        if(cmd.category == "nsfw"){
+          if(message.guild.guildCache?.nsfw){
+            cmds = cmds.concat(cmd.aliases.concat([cmd.name]))
+            return;
+          }
+        }else if(cmd.category === "desenvolvedor"){
           if(message.author.id == "719986033583849502"){
             cmds = cmds.concat(cmd.aliases.concat([cmd.name]))
+            return
           }
         }else{
-          if(cmd.category == "nsfw"){
-            if(message.guild.guildCache?.nsfw){
-              cmds = cmds.concat(cmd.aliases.concat([cmd.name]))
-              return;
-            }
-          }
           cmds = cmds.concat(cmd.aliases.concat([cmd.name]))
+          return
         }
 
         let distancia = Infinity
