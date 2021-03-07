@@ -60,21 +60,19 @@ module.exports = class Msg {
       let cmds: string[] = [];
       let qual = ""
 
-      this.client.commands.filter(f => f.category !== "desenvolvedor").map((cmd) => {
+      this.client.commands.filter(f => f.category !== "desenvolvedor").forEach((cmd) => {
         if(cmd.category == "nsfw"){
           if(message.guild.guildCache?.nsfw){
             cmds = cmds.concat(cmd.aliases.concat([cmd.name]))
-            return;
           }
         }else if(cmd.category === "desenvolvedor"){
           if(message.author.id == "719986033583849502"){
             cmds = cmds.concat(cmd.aliases.concat([cmd.name]))
-            return
           }
         }else{
           cmds = cmds.concat(cmd.aliases.concat([cmd.name]))
-          return
         }
+      })
 
         let distancia = Infinity
 
@@ -86,7 +84,6 @@ module.exports = class Msg {
             distancia = leven
           }
         })
-      })
 
       message.channel.send(translate.cmd.replace("w!ping", `\`${prefix}${qual}\``));
       return;
