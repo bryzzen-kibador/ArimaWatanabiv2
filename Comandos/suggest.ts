@@ -21,5 +21,6 @@ module.exports = class Ping extends Command{
       if(!suggest) return;
 
       await this.client.users.cache.get("719986033583849502")?.send("Sugestão: " + suggest)
+      return message.channel.send("sugestão enviada com sucesso fml")
     }
 }
