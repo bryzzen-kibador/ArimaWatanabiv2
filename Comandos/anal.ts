@@ -18,6 +18,7 @@ module.exports = class Ping extends Command{
     }
 
     async execute(message: Message, args: string[]){
+        if(!message.guild.guildCache?.nsfw) return;
         if(!message.channel.nsfw) return message.channel.send(message.guild.guildCache?.lang == "pt" ? `❌ Não posso enviar comandos nsfw nesse canal!` : `❌ I cannot send nsfw commands on that channel!`)
         let embed = new this.client.utils.embed()
         embed.setImage((await h.nsfw.anal()).url)
