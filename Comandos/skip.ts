@@ -32,7 +32,7 @@ module.exports = class Skip extends Command {
         }
 
         if (player && player.voiceChannel !== voice.channel.id) return message.channel.send(trans.myVoiceChannel)
-
+        
         try {
 
             if (args[0]) {
@@ -77,6 +77,7 @@ module.exports = class Skip extends Command {
             }
 
             if (!player?.playing) return message.channel.send(await this.client.getTranslate(message.guild?.id as string, "stopP"))
+            
             if (message.guild.guildCache?.dj) {
                 if (message.author == player.queue.current?.requester || voice.channel.members.filter(f => !f.user.bot).size == 1) {
                     player.stop()

@@ -61,13 +61,13 @@ module.exports = class VoiceStateUpdate {
 
                 if (oldState.channel.id == player.voiceChannel && oldState.channel.members.filter(f => !f.user.bot).size == 0) {
                     player.pause(true)
-                    const msg = await this.client.channels.cache.get(player?.textChannel as string)?.send(guild.guildCache?.lang === "pt" ? `❌ Fiquei sozinha, se ninguem aparecer dentro de 2 minutos vou meter o pé` : `❌ I was alone, if nobody shows up within 2 minutes I’ll put my foot in`)
+                    const msg = await this.client.channels.cache.get(player?.textChannel as string)?.send(guild.guildCache?.lang === "pt" ? `❌ Fiquei sozinha, se ninguem aparecer dentro de 1 minuto vou meter o pé` : `❌ I was alone, if nobody shows up within 1 minute I’ll put my foot in`)
                     const timeout = setTimeout(() => {
-                        this.client.channels.cache.get(player?.textChannel as string)?.send(guild.guildCache?.lang === "pt" ? `❌ Fiquei 2 minutos sozinha então parei de tocar` : `❌ I was 2 minutes alone so I stopped playing`)
+                        this.client.channels.cache.get(player?.textChannel as string)?.send(guild.guildCache?.lang === "pt" ? `❌ Fiquei 1 minutos sozinha então parei de tocar` : `❌ I was 1 minute alone so I stopped playing`)
                         player.destroy()
                         this.client.music?.timeouts.get(guild?.id as string)?.message.delete().catch(() => { })
                         this.client.music?.timeouts.delete(guild?.id as string)
-                    }, 2 * 60 * 1000)
+                    }, 1 * 60 * 1000)
 
                     this.client.music?.timeouts.set(guild?.id as string, { timeout, message: msg })
                 }
