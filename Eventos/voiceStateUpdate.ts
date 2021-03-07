@@ -78,7 +78,7 @@ module.exports = class VoiceStateUpdate {
                 oldState.guild.fm = false
                 return;
                 }
-                if(oldState.channel.id == oldState.guild.me?.voice.channel?.id && oldState.channel.members.filter(f => !f.user.bot).size == 0){
+                if(oldState.channel == oldState.guild.me?.voice.channel && oldState.channel.members.filter(f => !f.user.bot).size == 0){
                 try {
                 oldState.guild.conn.disconnect().then(() => {})
                 oldState.channel.leave().then(() => {})
